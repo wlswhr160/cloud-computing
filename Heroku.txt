@@ -1,0 +1,11 @@
+0. 설치 프로그램
+ - git (https://www.git-scm.com/)
+ - visual studio code (https://code.visualstudio.com/)
+ - notepad++ (https://notepad-plus-plus.org/downloads/)
+ - nodejs (https://nodejs.org/ko/)
+
+1. heroku 회원가입
+ - https://www.heroku.com/
+
+2. heroku toolbelt 설치
+ - https://devcenter.heroku.com/articles/heroku-cli#download-and-install
