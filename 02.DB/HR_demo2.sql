@@ -47,7 +47,7 @@ group by department_id;
 
 -----------------------------------
 -- 가장 많은 부하 직원을 가지고 있는 직원?
-select manager_id, max(cnt)
+select max(cnt)
 from 
 	(select manager_id, count(manager_id) as cnt
 	from employees
