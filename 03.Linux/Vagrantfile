@@ -1,12 +1,15 @@
 Vagrant.configure("2") do |config|
-  config.vm.define:"Node01" do |cfg|
+  # Ansible-Node01
+  config.vm.define:"node01" do |cfg|
     cfg.vm.box = "centos/7"
     cfg.vm.provider:virtualbox do |vb|
         vb.name="Node01"
+        vb.customize ["modifyvm", :id, "--cpus", 1]
+        vb.customize ["modifyvm", :id, "--memory", 1024]
     end
     cfg.vm.host_name="node01"
-    cfg.vm.network "public_network", ip: "192.168.56.101"
-    cfg.vm.network "forwarded_port", guest: 3306, host: 13306, auto_correct: false, id: "ssh"
-    cfg.vm.provision "shell", path: "bash_ssh_conf.sh"
+    cfg.vm.network "public_network", ip: "172.20.10.11"
+    cfg.vm.network "forwarded_port", guest: 22, host: 19211, auto_correct: false, id: "ssh"
+    cfg.vm.network "forwarded_port", guest: 80, host: 10080
   end
 end
