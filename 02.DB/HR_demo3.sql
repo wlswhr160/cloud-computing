@@ -37,4 +37,17 @@ where salary > (select avg(salary)
                     where department_id=e1.department_id);
 					
 [5] 사원정보(Employees) 테이블에 JOB_ID는 사원의 현재 업무를 뜻하고, JOB_HISTORY에 JOB_ID는 사원의 이전 업무를 뜻한다. 이 두 테이블을 교차해보면 업무가 변경된 사원의 정보도 볼 수 있지만 이전에 한번 했던 같은 업무를 그대로 하고 있는 사원의 정보도 볼 수 있다. 이전에 한번 했던 같은 업무를 보고 있는 사원의 사번과 업무를 출력하시오.
+select e.employee_id, e.job_id 
+from employees e join job_history j
+  on e.employee_id=j.employee_id
+where e.job_id=j.job_id ;  
+
 위 결과를 이용하여 출력된 176번 사원의 업무 이력의 변경 날짜 이력을 조회하시오.
+select employee_id, job_id, '' as 'start date', '' as 'end date'
+from employees
+where employee_id=176
+union
+select employee_id, job_id, start_date, end_date
+from job_history
+where employee_id=176
+
