@@ -28,9 +28,21 @@ FROM employees
 GROUP BY 1;
 	
 [9] 모든 사원은 직속 상사 및 직속 직원을 갖는다. 단, 최상위 또는 최하위 직원은 직속상사 및 직원이 없다. 소속된 사원들 중 어떤 사원의 상사로 근무 중인 사원의 총 수를 출력하시오.
+select count(distinct manager_id)
+from employees;
 
-[10] 각 사원이 소속된 부서별로 급여 합계, 급여 평균, 급여 최대값, 급여 최소값을 집계하고자 한다. 계산된 출력값은 6자리와 세 자리 구분기호, $ 표시와 함께 출력하고 부서번호의 오름차순 정렬하시오. 단, 부서에 소속되지 않은 사원에 대한 정보는 제외하고 출력시 머리글은 칭(alias) 처리하시오.
-
+[10] 각 사원이 소속된 부서별로 급여 합계, 급여 평균, 급여 최대값, 급여 최소값을 집계하고자 한다. 계산된 출력값은 6자리와 세 자리 구분기호, $ 표시와 함께 출력하고 부서번호의 오름차순 정렬하시오. 단, 부서에 소속되지 않은 사원에 대한 정보는 제외하고 출력시 머리글은 별칭(alias) 처리하시오.
+	- GROUP BY, SUM(), AVG(), MAX(), MIN()
+	- FORMAT(값, 소수점 표현자리수)
+select department_id
+	, count(department_id) as 'COUNT'
+	, concat('$', FORMAT(sum(salary), 0)) as 'Sum Salary'
+    , concat('$', FORMAT(avg(salary), 2)) as 'Avg Salary'
+    , concat('$', FORMAT(max(salary), 0)) as 'Max Salary'
+    , concat('$', FORMAT(min(salary), 0)) as 'Min Salary'
+from employees
+where department_id is not null
+group by department_id;	
 
 
 
