@@ -15,9 +15,37 @@ FROM employees
 ORDER BY salary DESC;
 
 [8] 모든 사원들 성과 이름(Name으로 별칭), 입사일 그리고 입사일이 어떤 요일이였는지 출력하시오. 이때 주(week)의 시작인 일요일부터 출력되도록 정렬하시오.
+	- DATE_FORMAT()
+SELECT concat(first_name, ' ', last_name) as 'Name'
+	, hire_date
+	, DATE_FORMAT(hire_date, '%W') as 'Day of the week'
+FROM employees
+ORDER BY DATE_FORMAT(hire_date, '%w');
 
+SELECT DATE_FORMAT(hire_date, '%W') as 'Day of the week'
+	, COUNT(DATE_FORMAT(hire_date, '%W')) AS 'COUNt'
+FROM employees
+GROUP BY 1;
+	
 [9] 모든 사원은 직속 상사 및 직속 직원을 갖는다. 단, 최상위 또는 최하위 직원은 직속상사 및 직원이 없다. 소속된 사원들 중 어떤 사원의 상사로 근무 중인 사원의 총 수를 출력하시오.
 
 [10] 각 사원이 소속된 부서별로 급여 합계, 급여 평균, 급여 최대값, 급여 최소값을 집계하고자 한다. 계산된 출력값은 6자리와 세 자리 구분기호, $ 표시와 함께 출력하고 부서번호의 오름차순 정렬하시오. 단, 부서에 소속되지 않은 사원에 대한 정보는 제외하고 출력시 머리글은 칭(alias) 처리하시오.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
