@@ -22,5 +22,12 @@ where commission_pct is not null
 order by salary DESC, commission_pct DESC;
 
 [5] 사원들의 업무별 전체 급여 평균이 $10,000보다 큰 경우를 조회하여 업무, 급여 평균을 출력하시오. 단 업무에 사원(CLERK)이 포함된 경우는 제외하고 전체 급여 평균이 높은 순서대로 출력하시오.
-SELECT * FROM employees
+select job_id, avg(salary) as 'Avg Salary'
+from employees
+where job_id not like '%CLERK%'
+group by job_id
+having  avg(salary) > 10000
+order by avg(salary) DESC;
+
+
 
