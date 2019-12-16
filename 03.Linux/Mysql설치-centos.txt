@@ -51,6 +51,9 @@ mysql> create user 'user3'@'%' identified by 'test1234';
     - (Windows 경우) C:\ProgramData\MySQL\MySQL Server 8.0\my.ini
     - (Windwos 경우) Mysql 재실행 
         - Service 메뉴에서 MySQL80 재시작
+    [mysqld]
+    server-id=3
+    replicate-do-db='cloud_db'
 
 13. Slave DB에서 Master DB 사용에 대한 설정 (root로 로그인)        
 change master to\
