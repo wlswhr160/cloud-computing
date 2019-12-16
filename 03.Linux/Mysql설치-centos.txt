@@ -7,10 +7,20 @@ $ sudo systemctl enable mysqld
 $ sudo systemctl start mysqld
 
 3. Mysql 로그인
-$ cat /var/log/mysqld.log 확인
+$ sudo cat /var/log/mysqld.log 확인
     -> temporary password 확인 -> copy
 $ mysql -uroot -p 
 
-4. Mysql root의 비밀번호 변경 
+4. Mysql root의 3 변경 
 mysql> set global validate_password_policy=LOW;
 mysql> alter user 'root'@'localhost' identified by 'test1234';
+
+5. Mysql 데이터베이스 생성
+mysql> create database cloud_db default character set utf8;
+mysql> create user 'user1'@'%' identified by 'test1234';
+mysql> grant all privileges on cloud_db.* to 'user1'@'%' identified by 'test1234';
+
+6. Mysql 접속 테스트
+Linux $ mysql -uuser1 -p 
+Windows c:\> mysql -uuser1 -p -h127.0.0.1 --port 13306
+
