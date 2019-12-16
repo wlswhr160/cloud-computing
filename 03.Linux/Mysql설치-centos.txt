@@ -24,3 +24,17 @@ mysql> grant all privileges on cloud_db.* to 'user1'@'%' identified by 'test1234
 Linux $ mysql -uuser1 -p 
 Windows c:\> mysql -uuser1 -p -h127.0.0.1 --port 13306
 
+7. my.cnf 파일 수정
+$ sudo vi /etc/my.cnf 수정 
+    [mysqld]
+    server-id=1
+    log_bin=mysql-log_bin
+
+8. Mysql 서버 재시작
+$ systemctl restart mysqld
+$ ps -el | grep mysql
+
+9. Master DB 상태 확인 (root 권한 필요)
+mysql>  show master status 
+    -> file name, postion 확인 
+
