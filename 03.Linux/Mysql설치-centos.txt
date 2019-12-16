@@ -1,0 +1,2 @@
+$ sudo yum -y install mysql-community-server
+$ sudo yum -y install http://dev.mysql.com/get/mysql57-community-release-el7-11.nsudo yum -y install mysql-community-server
