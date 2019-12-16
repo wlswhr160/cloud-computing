@@ -12,3 +12,5 @@ $ cat /var/log/mysqld.log 확인
 $ mysql -uroot -p 
 
 4. Mysql root의 비밀번호 변경 
+mysql> set global validate_password_policy=LOW;
+mysql> alter user 'root'@'localhost' identified by 'test1234';
