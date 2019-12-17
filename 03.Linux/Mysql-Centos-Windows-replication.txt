@@ -6,6 +6,7 @@
 	$ mv backup.sql  ./data
 3. Master DB에서 백업한 데이터를 Slave DB에 복원
 	=> Master DB = Slave DB 동기화 완료 
+	mysql> create database cloud_db;
 	C:\Users\HPE\Work\vagrant\data> mysql -uroot -p cloud_db < backup.sql
 
 4. Master DB의 바이너리 로그 파일의 파일명과 Position 
