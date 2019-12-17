@@ -1,0 +1,25 @@
+** Slave DB
+1. cloud_db에 있는 테이블 삭제
+	mysql> drop table members;
+	
+** Master DB
+2. 바이너리 파일, Position 확인
+	mysql> show master status;
+
+** Slave DB
+3. change master to 정보 수정 with "바이너리 파일 명, Position"
+
+** Master DB
+4. 레코드 변경, 테이블 생성 작업 추가
+	mysql> insert ... , update ... , create table ...
+	
+** Slave DB
+5. Replication 반영 안됨!
+	mysql> show slave status\G; -> 확인
+		- slave io thread, slave sql thread 확인
+	mysql> 테이블 생성 (create table members ...)
+	mysql> stop slave;
+	mysql> set global sql_slave_skip_counter=1;
+	mysql> start slave;
+
+6. 새로운 데이터의 Replication 성공
