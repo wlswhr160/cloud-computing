@@ -14,6 +14,7 @@
 - mysql server, workbench (https://dev.mysql.com/downloads/installer/)
 
 3. Linux 
-- Virtual Box (https://www.virtualbox.org/) 
+- putty, puttygen (https://www.putty.org/)
+- Virtual Box version 6.0 이하 (https://www.virtualbox.org/) 
 - VM Ware player (https://my.vmware.com/en/web/vmware/free#desktop_end_user_computing/vmware_workstation_player/15_0)
 - Vagrant (https://www.vagrantup.com/)
