@@ -1,0 +1,25 @@
+## 사용중인 Master DB 복제 (cloud_db)
+1. Slave 에서 기존 cloud_db를 삭제
+	- drop database cloud_db
+2. Master DB에서 지금까지의 데이터를 백업 
+	$ mysqldump -uroot -p cloud_db > backup.sql
+	$ mv backup.sql  ./data
+3. Master DB에서 백업한 데이터를 Slave DB에 복원
+	=> Master DB = Slave DB 동기화 완료 
+	C:\Users\HPE\Work\vagrant\data> mysql -uroot -p cloud_db < backup.sql
+
+4. Master DB의 바이너리 로그 파일의 파일명과 Position 
+	- mysql> show master status; 
+5. Slave DB에서
+	- Master DB의 복제 설정 (chang to master ....)
+		change master to\
+		master_host='127.0.0.1',\
+		master_port=13306,\
+		master_user='replicate_user',\
+		master_password='test1234',\
+		master_log_file='mysql-bin.000008',\
+		master_log_pos=154;
+	- Slave DB 재시작 (Windows 서비스 다시 시작)
+
+6. Master DB에서의 변경 내용을 Slave DB에서 확인 가능!
+	
