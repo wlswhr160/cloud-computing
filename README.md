@@ -4,6 +4,7 @@
 - Git (https://git-scm.com/)
 - Visual Studio Code (https://code.visualstudio.com/)
 - Notepad++ (https://notepad-plus-plus.org/downloads/v7.8.2/)
+- Postman (https://www.getpostman.com/downloads/);
 
 1. Cloud Computing
 - AWS login 확인
