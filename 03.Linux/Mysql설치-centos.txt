@@ -61,8 +61,8 @@ master_host='127.0.0.1',\
 master_port=13306,\
 master_user='replicate_user',\
 master_password='test1234',\
-master_log_file='mysql-bin.000002',\
-master_log_pos=4967;
+master_log_file='mysql-bin.000008',\
+master_log_pos=718;
 
 14. Slave DB 재실행
 $ systemctl restart mysqld (or Windows 서비스 재실행)
@@ -83,4 +83,4 @@ mysql> show slave status\G;
 16. Slave에 user3으로 로그인    
     mysql> use cloud_db;
     mysql> select ...
-    
+
