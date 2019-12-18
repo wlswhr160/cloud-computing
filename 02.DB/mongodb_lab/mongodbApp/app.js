@@ -1,3 +1,5 @@
+// app.js
+
 // [LOAD PACKAGES]
 var express     = require('express');
 var app         = express();
@@ -16,16 +18,20 @@ var server = app.listen(port, function(){
  console.log("Express server has started on port " + port)
 });
 
-// CONNECT TO MONGODB SERVER - event
+// [ CONFIGURE mongoose ]
+
+// CONNECT TO MONGODB SERVER
 var db = mongoose.connection;
 db.on('error', console.error);
 db.once('open', function(){
     // CONNECTED TO MONGODB SERVER
-    console.log("Connected to mongod server");
+    console.log("Connected to mongod server!");
 });
 
-// CONNECT TO MONGODB SERVER - connect
+mongoose.connect('mongodb://localhost:40000/bookstore' , { useMongoClient: true});
 
 // DEFINE MODEL
+var Book = require('./models/book');
 
 // [CONFIGURE ROUTER]
+var router = require('./routes')(app, Book)
