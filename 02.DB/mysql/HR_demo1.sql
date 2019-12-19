@@ -18,10 +18,18 @@ from employees
 where last_name like '%e%' 
   and last_name like '%o%';
 
-[4] HR 부서에서는 급여(salary)와 수당율(commission_pct)에 대한 지출 보고서를 작성하려고 한다. 이에 수당을 받는 모든 사원의 성과 이름(Name으로 별칭), 급여, 업무, 수당율을 출력하시오. 이때 급여가 큰 순서대로 정렬하되, 급여가 같으면 수당율이 큰 순서대로 정렬하시오.
-
+[4] HR 부서에서는 급여(salary)와 수당율(commission_pct)에 대한 지출 보고서를 작성하려고 한다. 이에 수당을 받는 모든 사원의 성과 이름(Name으로 별칭), 급여, 업무, 수당율, (연봉 출력) 을 출력하시오. 이때 연봉이 큰 순서대로 정렬하되, 연봉이 같으면 급여가 큰 순서대로 정렬하시오. 
+select concat(first_name, ' ',last_name) as 'Name'
+	, salary, commission_pct
+    , ( (salary * 12) + (salary * 12 * commission_pct) ) as 'Annual salary'
+from employees
+where commission_pct is not null
+order by 4 desc, salary desc, commission_pct desc;
 
 [5] 사원들의 업무별 전체 급여 평균이 $10,000보다 큰 경우를 조회하여 업무, 급여 평균을 출력하시오. 단 업무에 사원(CLERK)이 포함된 경우는 제외하고 전체 급여 평균이 높은 순서대로 출력하시오.
-
-
-
+select job_id, avg(salary) as 'Avg Salary'
+from employees
+where job_id not like '%CLERK%'
+group by job_id
+having avg(salary) > 10000
+order by avg(salary) desc;
