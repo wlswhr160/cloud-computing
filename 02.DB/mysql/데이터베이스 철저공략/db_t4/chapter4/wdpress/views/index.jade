@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  script(src='/socket.io/socket.io.js')
+  script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+  script
+    $(document).ready(function(){
+      var socket = io.connect('http://'+location.host + '/');
+      $("#saveButton").click(function(){
+        socket.emit('save', {
+          userId : $('#userId').val(),
+          age : $('#age').val(),
+          site : {
+            name : $('#site_name').val(),
+            url : $('#site_url').val()
+          }
+        });
+      });
+    });
+
+  h1= title
+  form
+    div
+      label ID
+      input(type='text',id='userId')
+      br
+      label 연령
+      input(type='text',id='age',style='width:4em;')
+      br
+      사이트 정보
+      div(style='margin-left:2em;')
+        label 이름
+        input(type='text',id='site_name')
+        br
+        label URL
+        input(type='text',id='site_url',style='width:20em;')
+      input(type='button',id='saveButton',value='저장')
+

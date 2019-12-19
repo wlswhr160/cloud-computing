@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>서비스 리퀘스트의 작성</title>
+  </head>
+  <body>
+    <form method="post" action="/service/new">
+      <% if @message %>
+        <b><%= @message %></b>
+      <% end %>
+      <h3>고객 정보를 입력하여 주십시오.</h3>
+      <label for="product">제품명 : </label>
+      <input type="text" name="product" id="product" /><br/>
+      <label for="title">제목 : </label>
+      <input type="text" name="title" id="title" /><br/>
+      <input type="submit" name="submit" value="작성" />
+    </form>
+  </body>
+</html>
