@@ -1,3 +1,4 @@
+use bookstore;
 
 DROP TABLE IF EXISTS Orders ;
 DROP TABLE IF EXISTS Book;
