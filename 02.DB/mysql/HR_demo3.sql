@@ -41,7 +41,6 @@ select e.employee_id, e.job_id
 from employees e join job_history j
   on e.employee_id=j.employee_id
 where e.job_id=j.job_id  ;
--> (200, 176)
 
 위 결과를 이용하여 출력된 176번 사원의 업무 이력의 변경 날짜 이력을 조회하시오.
 select employee_id, job_id, 'Current' AS "Start Date", 'Current' AS "End Date"
