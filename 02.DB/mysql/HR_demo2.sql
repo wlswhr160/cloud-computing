@@ -20,15 +20,24 @@ order by 3 desc;
 SELECT concat(first_name, ' ', last_name) as 'Name', hire_date
 	, date_format(hire_date, '%W') as 'Day of the week'
 FROM employees
-order by date_format(hire_date, '%w')
+order by date_format(hire_date, '%w');
 	
 [9] 모든 사원은 직속 상사 및 직속 직원을 갖는다. 단, 최상위 또는 최하위 직원은 직속상사 및 직원이 없다. 소속된 사원들 중 어떤 사원의 상사로 근무 중인 사원의 총 수를 출력하시오.
-
+select count(distinct manager_id) as 'Count Managers'
+from Employees;
+(HW) 사원들 중에 부하 직원을 가지고 있지 않은 직원의 수? 
 
 [10] 각 사원이 소속된 부서별로 급여 합계, 급여 평균, 급여 최대값, 급여 최소값을 집계하고자 한다. 계산된 출력값은 6자리와 세 자리 구분기호, $ 표시와 함께 출력하고 부서번호의 오름차순 정렬하시오. 단, 부서에 소속되지 않은 사원에 대한 정보는 제외하고 출력시 머리글은 별칭(alias) 처리하시오.
 	- GROUP BY, SUM(), AVG(), MAX(), MIN()
 	- FORMAT(값, 소수점 표현자리수)
-
+select department_id
+	, concat('$', format(sum(salary), 0)) as 'Sum Salary'
+    , concat('$', format(avg(salary), 1)) as 'Avg Salary'
+    , concat('$', format(max(salary), 0)) as 'Max Salary'
+    , concat('$', format(min(salary), 0)) as 'Min Salary'
+from employees
+where department_id is not null
+group by department_id;
 
 
 
